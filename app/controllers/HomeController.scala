@@ -1,5 +1,8 @@
 package controllers
 
+import controllers.Helpers
+import controllers.Helpers._
+
 import javax.inject._
 import play.api.mvc._
 import org.mongodb.scala._
@@ -17,8 +20,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     val client: MongoClient = MongoClient(uri)
     val db: MongoDatabase = client.getDatabase("sample_analytics")
     val coll: MongoCollection[Document] = db.getCollection("customers")
-    val results = coll.find()
-    println(results.first().document("_id"))
+    //coll.find().printResults()
     Ok(views.html.index("aaaa"))
   }
 
