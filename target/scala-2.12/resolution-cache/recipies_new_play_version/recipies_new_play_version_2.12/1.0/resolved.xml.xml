@@ -4,7 +4,7 @@
 		module="recipies_new_play_version_2.12"
 		revision="1.0"
 		status="integration"
-		publication="20210304111740"
+		publication="20210304141535"
 	>
 		<description>
 		Recipies_New_Play_Version
@@ -58,5 +58,6 @@
 		<dependency org="com.typesafe.play" name="play-specs2_2.12" rev="2.8.1" conf="test->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-guice_2.12" rev="2.8.1" conf="compile->default(compile)"/>
 		<dependency org="org.mongodb.scala" name="mongo-scala-driver_2.12" rev="4.2.2" conf="compile->default(compile)"/>
+		<dependency org="org.reactivemongo" name="play2-reactivemongo_2.12" rev="0.20.13-play27" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

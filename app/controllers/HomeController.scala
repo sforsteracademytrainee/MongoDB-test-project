@@ -6,21 +6,26 @@ import controllers.Helpers._
 import javax.inject._
 import play.api.mvc._
 import org.mongodb.scala._
+import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
+import reactivemongo.play.json.collection.JSONCollection
+
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(cc: ControllerComponents, defaultApi: ReactiveMongoApi) extends AbstractController(cc)
+  with MongoController with ReactiveMongoComponents {
+
+  implicit def ec: ExecutionContext = cc.executionContext
+
+  def collection: Future[JSONCollection] =
+    database.map(_.collection[JSONCollection]("persons"))
 
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
   }
 
   def test = Action {
-    val uri: String = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.nveej.mongodb.net/sample_analytics?retryWrites=true&w=majority"
-    System.setProperty("org.mongodb.async.type", "netty")
-    val client: MongoClient = MongoClient(uri)
-    val db: MongoDatabase = client.getDatabase("sample_analytics")
-    val coll: MongoCollection[Document] = db.getCollection("customers")
-    //coll.find().printResults()
+    defaultApi
     Ok(views.html.index("aaaa"))
   }
 

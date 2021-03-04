@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Thu Mar 04 11:22:25 GMT 2021
+// @SOURCE:C:/Users/simon/IdeaProjects/MongoDB-test-project/conf/routes
+// @DATE:Thu Mar 04 14:16:30 GMT 2021
 
 package router
 
