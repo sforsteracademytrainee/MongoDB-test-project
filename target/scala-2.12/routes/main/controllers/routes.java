@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/simon/IdeaProjects/MongoDB-test-project/conf/routes
-// @DATE:Thu Mar 04 14:16:30 GMT 2021
+// @DATE:Fri Mar 05 10:46:05 GMT 2021
 
 package controllers;
 

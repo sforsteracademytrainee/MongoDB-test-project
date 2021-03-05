@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/simon/IdeaProjects/MongoDB-test-project/conf/routes
-// @DATE:Thu Mar 04 14:16:30 GMT 2021
+// @DATE:Fri Mar 05 10:46:05 GMT 2021
 
 import play.api.mvc.Call
 
@@ -16,6 +16,12 @@ package controllers {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:7
+    def create(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "create")
+    }
   
     // @LINE:3
     def index(): Call = {

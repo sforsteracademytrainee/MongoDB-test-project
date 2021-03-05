@@ -4,7 +4,7 @@
 		module="recipies_new_play_version$sources_2.12"
 		revision="1.0"
 		status="integration"
-		publication="20210304141538"
+		publication="20210305101105"
 	/>
 	<configurations>
 		<conf name="universal" visibility="public" description=""/>

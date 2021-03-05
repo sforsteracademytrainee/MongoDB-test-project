@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/simon/IdeaProjects/MongoDB-test-project/conf/routes
-// @DATE:Thu Mar 04 14:16:30 GMT 2021
+// @DATE:Fri Mar 05 10:46:05 GMT 2021
 
 package router
 
@@ -42,6 +42,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """test""", """controllers.HomeController.test"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """create""", """controllers.HomeController.create"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -103,6 +104,24 @@ class Routes(
     )
   )
 
+  // @LINE:7
+  private[this] lazy val controllers_HomeController_create3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("create")))
+  )
+  private[this] lazy val controllers_HomeController_create3_invoker = createInvoker(
+    HomeController_1.create,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "create",
+      Nil,
+      "GET",
+      this.prefix + """create""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -122,6 +141,12 @@ class Routes(
     case controllers_HomeController_test2_route(params@_) =>
       call { 
         controllers_HomeController_test2_invoker.call(HomeController_1.test)
+      }
+  
+    // @LINE:7
+    case controllers_HomeController_create3_route(params@_) =>
+      call { 
+        controllers_HomeController_create3_invoker.call(HomeController_1.create)
       }
   }
 }
