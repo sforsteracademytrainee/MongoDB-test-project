@@ -11,3 +11,5 @@ GET     /read/:id                   controllers.HomeController.read(id: reactive
 GET     /delete/:id                 controllers.HomeController.delete(id: reactivemongo.bson.BSONObjectID)
 
 PUT     /update/:id                 controllers.HomeController.update(id: reactivemongo.bson.BSONObjectID)
+
+GET     /form                       controllers.HomeController.form

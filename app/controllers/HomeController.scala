@@ -3,6 +3,7 @@ package controllers
 import DAO.UserDAO
 import models.JsonFormats.userFormat
 import models._
+import play.api.i18n.I18nSupport
 import play.api.libs.json.Json
 
 import javax.inject._
@@ -14,13 +15,23 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class HomeController @Inject() (cc: ControllerComponents, val reactiveMongoApi: ReactiveMongoApi, dao: UserDAO) extends AbstractController(cc)
-  with MongoController with ReactiveMongoComponents {
+  with MongoController with ReactiveMongoComponents with I18nSupport {
 
   implicit def ec: ExecutionContext = cc.executionContext
 
 
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
+  }
+
+  def form = Action { implicit request =>
+    UserForm.form.bindFromRequest().fold({ formsWithError =>
+      BadRequest(views.html.createForm(formsWithError))
+    }, { creator =>
+      val newUser = User(None, creator.age, creator.firstName, creator.lastName)
+      dao.create(newUser)
+      Ok(views.html.index("Created new user"))
+    })
   }
 
   def list = Action.async {

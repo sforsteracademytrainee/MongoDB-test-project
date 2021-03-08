@@ -1,0 +1,13 @@
+@(userForm: Form[UserTemp])(implicit messages: Messages)
+
+@main("Form") {
+    <h1>Create a user</h1>
+
+    @helper.form(action = routes.HomeController.form) {
+        @helper.inputText(userForm("age"))
+        @helper.inputText(userForm("firstName"))
+        @helper.inputText(userForm("lastName"))
+        <button type="submit">Submit</button>
+    }
+
+}
