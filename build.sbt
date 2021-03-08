@@ -1,6 +1,6 @@
-name := "Recipies_New_Play_Version"
+name := "MongoDB test"
  
-version := "1.0" 
+version := "1"
       
 lazy val `recipies_new_play_version` = (project in file(".")).enablePlugins(PlayScala)
 
@@ -8,7 +8,7 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
       
 resolvers += "Akka Snapshot Repository" at "https://repo.akka.io/snapshots/"
       
-scalaVersion := "2.12.2"
+scalaVersion := "2.13.5"
 
 libraryDependencies ++= Seq( jdbc , ehcache , ws , specs2 % Test , guice )
 

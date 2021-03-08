@@ -2,7 +2,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 GET     /                           controllers.HomeController.index
 
-GET     /test                       controllers.HomeController.test
+POST    /create                     controllers.HomeController.create
 
-GET     /create                     controllers.HomeController.create
-      
+GET     /list                       controllers.HomeController.list
