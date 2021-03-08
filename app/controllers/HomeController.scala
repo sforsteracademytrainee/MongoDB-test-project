@@ -3,10 +3,12 @@ package controllers
 import DAO.UserDAO
 import models.JsonFormats.userFormat
 import models._
+import play.api.libs.json.Json
 
 import javax.inject._
 import play.api.mvc._
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
+import reactivemongo.bson.BSONObjectID
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -34,6 +36,30 @@ class HomeController @Inject() (cc: ControllerComponents, val reactiveMongoApi: 
         Created
       }
     }.getOrElse(Future.successful(BadRequest("Invalid movie")))
+  }
+
+  def read(id: BSONObjectID) = Action.async {
+    dao.read(id).map { user =>
+      user.map { result =>
+        Ok(Json.toJson(result))
+      }.getOrElse(NotFound)
+    }
+  }
+
+  def update(id: BSONObjectID) = Action.async(parse.json) {
+    _.body.validate[User].map { result =>
+      dao.update(id, result).map {
+        case Some(user) => Ok(Json.toJson(user))
+        case _ => NotFound
+      }
+    }.getOrElse(Future.successful(BadRequest("No update :(")))
+  }
+
+  def delete(id: BSONObjectID) = Action.async {
+    dao.delete(id).map {
+      case Some(user) => Ok(Json.toJson(user))
+      case _ => NotFound
+    }
   }
 
 }

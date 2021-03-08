@@ -31,4 +31,16 @@ class UserDAO @Inject()(implicit ec: ExecutionContext, reactiveMongoApi: Reactiv
     collection.flatMap(_.find(BSONDocument("_id" -> id)).one[User]) // equivalent to { "_id" : id }
   }
 
+  def update(id: BSONObjectID, user: User): Future[Option[User]] = {
+    collection.flatMap(_.findAndUpdate(BSONDocument("_id" -> id), BSONDocument(f"$$set" -> BSONDocument(
+      "age" -> user.age,
+      "firstName" -> user.firstName,
+      "lastName" -> user.lastName
+    )), true).map(_.result[User]))
+  }
+
+  def delete(id: BSONObjectID): Future[Option[User]] = {
+    collection.flatMap(_.findAndRemove(BSONDocument("_id" ->  id)).map(_.result[User]))
+  }
+
 }

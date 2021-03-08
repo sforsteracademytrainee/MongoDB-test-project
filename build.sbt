@@ -1,3 +1,5 @@
+import play.sbt.routes.RoutesKeys
+
 name := "MongoDB test"
  
 version := "1"
@@ -16,3 +18,5 @@ unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/
 
 libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "4.2.2"
 libraryDependencies += "org.reactivemongo" %% "play2-reactivemongo" % "0.20.13-play27"
+
+RoutesKeys.routesImport += "play.modules.reactivemongo.PathBindables._"
