@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Mon Mar 08 23:19:19 GMT 2021
+// @DATE:Mon Mar 08 23:42:44 GMT 2021
 
 import play.api.mvc.Call
 
@@ -84,10 +84,22 @@ package controllers {
     }
 
   
+    // @LINE:14
+    def list(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "readAllHolo")
+    }
+  
     // @LINE:13
     def create(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "createholo")
+    }
+  
+    // @LINE:15
+    def read(id:reactivemongo.bson.BSONObjectID): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "readHolo/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].unbind("id", id)))
     }
   
   }

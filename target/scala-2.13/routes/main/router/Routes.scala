@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Mon Mar 08 23:19:19 GMT 2021
+// @DATE:Mon Mar 08 23:42:44 GMT 2021
 
 package router
 
@@ -53,6 +53,8 @@ class Routes(
     ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """update/""" + "$" + """id<[^/]+>""", """controllers.HomeController.update(id:reactivemongo.bson.BSONObjectID)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """form""", """controllers.HomeController.form"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createholo""", """controllers.HoloController.create"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """readAllHolo""", """controllers.HoloController.list"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """readHolo/""" + "$" + """id<[^/]+>""", """controllers.HoloController.read(id:reactivemongo.bson.BSONObjectID)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -222,6 +224,42 @@ class Routes(
     )
   )
 
+  // @LINE:14
+  private[this] lazy val controllers_HoloController_list9_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("readAllHolo")))
+  )
+  private[this] lazy val controllers_HoloController_list9_invoker = createInvoker(
+    HoloController_0.list,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HoloController",
+      "list",
+      Nil,
+      "GET",
+      this.prefix + """readAllHolo""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:15
+  private[this] lazy val controllers_HoloController_read10_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("readHolo/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_HoloController_read10_invoker = createInvoker(
+    HoloController_0.read(fakeValue[reactivemongo.bson.BSONObjectID]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HoloController",
+      "read",
+      Seq(classOf[reactivemongo.bson.BSONObjectID]),
+      "GET",
+      this.prefix + """readHolo/""" + "$" + """id<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -277,6 +315,18 @@ class Routes(
     case controllers_HoloController_create8_route(params@_) =>
       call { 
         controllers_HoloController_create8_invoker.call(HoloController_0.create)
+      }
+  
+    // @LINE:14
+    case controllers_HoloController_list9_route(params@_) =>
+      call { 
+        controllers_HoloController_list9_invoker.call(HoloController_0.list)
+      }
+  
+    // @LINE:15
+    case controllers_HoloController_read10_route(params@_) =>
+      call(params.fromPath[reactivemongo.bson.BSONObjectID]("id", None)) { (id) =>
+        controllers_HoloController_read10_invoker.call(HoloController_0.read(id))
       }
   }
 }

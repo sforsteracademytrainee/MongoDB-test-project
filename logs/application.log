@@ -1,0 +1,22 @@
+2021-03-08 23:37:16,320 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-9 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2021-03-08 23:37:16,325 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-9 - Application started (Dev) (no global state)
+2021-03-08 23:42:56,702 [INFO] from play.modules.reactivemongo.DefaultReactiveMongoApi in application-akka.actor.internal-dispatcher-4 - ReactiveMongoApi stopping...
+2021-03-08 23:42:56,721 [INFO] from play.modules.reactivemongo.DefaultReactiveMongoApi in application-akka.actor.default-dispatcher-7 - ReactiveMongoApi connections are stopped
+2021-03-08 23:42:56,959 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-5 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2021-03-08 23:42:56,962 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-5 - Application started (Dev) (no global state)
+2021-03-08 23:51:27,858 [INFO] from play.modules.reactivemongo.DefaultReactiveMongoApi in application-akka.actor.internal-dispatcher-3 - ReactiveMongoApi stopping...
+2021-03-08 23:51:27,865 [INFO] from play.modules.reactivemongo.DefaultReactiveMongoApi in application-akka.actor.default-dispatcher-7 - ReactiveMongoApi connections are stopped
+2021-03-08 23:51:28,054 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-10 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2021-03-08 23:51:28,056 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-10 - Application started (Dev) (no global state)

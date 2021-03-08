@@ -11,3 +11,5 @@ PUT     /update/:id                 controllers.HomeController.update(id: reacti
 GET     /form                       controllers.HomeController.form
 
 POST    /createholo                 controllers.HoloController.create
+GET     /readAllHolo                controllers.HoloController.list
+GET     /readHolo/:id               controllers.HoloController.read(id: reactivemongo.bson.BSONObjectID)

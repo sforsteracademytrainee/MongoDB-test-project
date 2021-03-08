@@ -17,6 +17,11 @@ class HoloDAO @Inject()(implicit ec: ExecutionContext, reactiveMongoApi: Reactiv
   private def collection: Future[JSONCollection] = reactiveMongoApi.database.map(_.collection("holomem"))
 
   //CRUD FUNCTIONALITIES
+  //CREATE
+  def create(holo: Holo): Future[WriteResult] =
+  {
+    collection.flatMap(_.insert(holo))
+  }
 
   //READ ALL
   def list(limit: Int = 100): Future[Seq[Holo]] = {
@@ -26,12 +31,7 @@ class HoloDAO @Inject()(implicit ec: ExecutionContext, reactiveMongoApi: Reactiv
         .collect[Seq](limit, Cursor.FailOnError[Seq[Holo]]()))
   }
 
-  //CREATE
-  def create(holo: Holo): Future[WriteResult] =
-  {
-    collection.flatMap(_.insert(holo))
-  }
-
+  //READ
   def read (id: BSONObjectID) : Future[Option[Holo]] =
   {
     collection.flatMap(_.find(BSONDocument("_id" -> id)).one[Holo])

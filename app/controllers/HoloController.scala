@@ -27,4 +27,20 @@ class HoloController @Inject() (cc: ControllerComponents, val reactiveMongoApi: 
       }
     }.getOrElse(Future.successful(BadRequest("Invalid holomem")))
   }
+
+  def list = Action.async
+  {
+    dao.list().map { holo =>
+      Ok(views.html.holoIndex(holo.toString()))
+    }
+  }
+
+  def read(id: BSONObjectID) = Action.async
+  {
+    dao.read(id).map { holo =>
+      holo.map { result =>
+        Ok(Json.toJson(result))
+      }.getOrElse(NotFound)
+    }
+  }
 }
