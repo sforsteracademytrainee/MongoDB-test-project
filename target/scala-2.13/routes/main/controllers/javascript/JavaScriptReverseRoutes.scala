@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Mon Mar 08 23:54:51 GMT 2021
+// @DATE:Mon Mar 08 23:56:10 GMT 2021
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -119,26 +119,6 @@ package controllers.javascript {
     }
 
   
-    // @LINE:16
-    def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HoloController.update",
-      """
-        function(id0) {
-          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "updateHolo/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:14
-    def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HoloController.list",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "readAllHolo"})
-        }
-      """
-    )
-  
     // @LINE:13
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HoloController.create",
@@ -155,6 +135,36 @@ package controllers.javascript {
       """
         function(id0) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "readHolo/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:14
+    def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HoloController.list",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "readAllHolo"})
+        }
+      """
+    )
+  
+    // @LINE:16
+    def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HoloController.update",
+      """
+        function(id0) {
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "updateHolo/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:17
+    def delete: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HoloController.delete",
+      """
+        function(id0) {
+          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "deleteHolo/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].javascriptUnbind + """)("id", id0))})
         }
       """
     )

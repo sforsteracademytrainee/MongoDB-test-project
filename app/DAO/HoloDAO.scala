@@ -47,4 +47,9 @@ class HoloDAO @Inject()(implicit ec: ExecutionContext, reactiveMongoApi: Reactiv
     )), true).map(_.result[Holo]))
   }
 
+  //DELETE
+  def delete(id: BSONObjectID): Future[Option[Holo]] =
+  {
+    collection.flatMap(_.findAndRemove(BSONDocument("_id" ->  id)).map(_.result[Holo]))
+  }
 }

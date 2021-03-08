@@ -52,4 +52,11 @@ class HoloController @Inject() (cc: ControllerComponents, val reactiveMongoApi: 
       }
     }.getOrElse(Future.successful(BadRequest("Can't update soz")))
   }
+
+  def delete(id: BSONObjectID) = Action.async {
+    dao.delete(id).map {
+      case Some(holo) => Ok(Json.toJson(holo))
+      case _ => NotFound
+    }
+  }
 }

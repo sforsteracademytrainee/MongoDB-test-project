@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Mon Mar 08 23:54:51 GMT 2021
+// @DATE:Mon Mar 08 23:56:10 GMT 2021
 
 package controllers;
 
