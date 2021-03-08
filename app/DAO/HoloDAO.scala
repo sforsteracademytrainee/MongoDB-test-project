@@ -36,4 +36,15 @@ class HoloDAO @Inject()(implicit ec: ExecutionContext, reactiveMongoApi: Reactiv
   {
     collection.flatMap(_.find(BSONDocument("_id" -> id)).one[Holo])
   }
+
+  //UPDATE
+  def update(id: BSONObjectID, holo: Holo): Future[Option[Holo]] =
+  {
+    collection.flatMap(_.findAndUpdate(BSONDocument("_id" -> id), BSONDocument(f"$$set" -> BSONDocument(
+      "name" -> holo.name,
+      "branch" -> holo.branch,
+      "gen" -> holo.gen
+    )), true).map(_.result[Holo]))
+  }
+
 }

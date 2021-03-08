@@ -13,3 +13,4 @@ GET     /form                       controllers.HomeController.form
 POST    /createholo                 controllers.HoloController.create
 GET     /readAllHolo                controllers.HoloController.list
 GET     /readHolo/:id               controllers.HoloController.read(id: reactivemongo.bson.BSONObjectID)
+PUT     /updateHolo/:id             controllers.HoloController.update(id: reactivemongo.bson.BSONObjectID)

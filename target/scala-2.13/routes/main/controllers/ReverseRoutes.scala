@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Mon Mar 08 23:42:44 GMT 2021
+// @DATE:Mon Mar 08 23:54:51 GMT 2021
 
 import play.api.mvc.Call
 
@@ -83,6 +83,12 @@ package controllers {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:16
+    def update(id:reactivemongo.bson.BSONObjectID): Call = {
+      
+      Call("PUT", _prefix + { _defaultPrefix } + "updateHolo/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].unbind("id", id)))
+    }
   
     // @LINE:14
     def list(): Call = {

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/QA ACADEMY/Scala Materials/Play/MongoDB-test-project/conf/routes
-// @DATE:Mon Mar 08 23:42:44 GMT 2021
+// @DATE:Mon Mar 08 23:54:51 GMT 2021
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -118,6 +118,16 @@ package controllers.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:16
+    def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HoloController.update",
+      """
+        function(id0) {
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "updateHolo/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[reactivemongo.bson.BSONObjectID]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
   
     // @LINE:14
     def list: JavaScriptReverseRoute = JavaScriptReverseRoute(

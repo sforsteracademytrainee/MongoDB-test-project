@@ -43,4 +43,13 @@ class HoloController @Inject() (cc: ControllerComponents, val reactiveMongoApi: 
       }.getOrElse(NotFound)
     }
   }
+
+  def update(id: BSONObjectID) = Action.async(parse.json) {
+    _.body.validate[Holo].map { result =>
+      dao.update(id, result).map {
+        case Some(holo) => Ok(Json.toJson(holo))
+        case _ => NotFound
+      }
+    }.getOrElse(Future.successful(BadRequest("Can't update soz")))
+  }
 }
