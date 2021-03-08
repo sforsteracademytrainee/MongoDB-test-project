@@ -1,6 +1,152 @@
-2021-03-05 11:10:19,906 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-5 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2021-03-05 16:05:00,878 [WARN] from play.modules.reactivemongo.DefaultReactiveMongoApi in play-dev-mode-akka.actor.default-dispatcher-9 - Invalid connection URI 'mongodb.uri': mongodb+srv://localhost/test
+org.xbill.DNS.TextParseException: '': empty name
+	at org.xbill.DNS.Name.parseException(Name.java:172)
+	at org.xbill.DNS.Name.<init>(Name.java:207)
+	at org.xbill.DNS.Name.fromString(Name.java:307)
+	at reactivemongo.util.DefaultSRVResolver.apply(DefaultSRVResolver.scala:34)
+	at reactivemongo.util.package$.srvRecords(package.scala:112)
+	at reactivemongo.api.MongoConnection$.parseHosts(MongoConnection.scala:656)
+	at reactivemongo.api.MongoConnection$.parseHostsAndDbName(MongoConnection.scala:725)
+	at reactivemongo.api.MongoConnection$.$anonfun$fromString$15(MongoConnection.scala:583)
+	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:302)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at scala.concurrent.impl.ExecutionContextImpl$AdaptedForkJoinTask.exec(ExecutionContextImpl.scala:140)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+2021-03-05 16:05:00,880 [WARN] from play.modules.reactivemongo.DefaultReactiveMongoApi in play-dev-mode-akka.actor.default-dispatcher-9 - No configuration in the 'mongodb' section
+2021-03-05 16:05:01,335 [ERROR] from play.api.http.DefaultHttpErrorHandler in play-dev-mode-akka.actor.default-dispatcher-9 - 
+
+! @7j1lheodc - Internal server error, for (GET) [/create] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for play.modules.reactivemongo.ReactiveMongoApi was bound.
+  while locating play.modules.reactivemongo.ReactiveMongoApi
+    for the 2nd parameter of controllers.HomeController.<init>(HomeController.scala:18)
+  while locating controllers.HomeController
+    for the 3rd parameter of router.Routes.<init>(Routes.scala:29)
+  at play.api.inject.RoutesProvider$.bindingsFromConfiguration(BuiltinModule.scala:137):
+Binding(class router.Routes to self) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.inject.guice.GuiceableModuleConversions$$anon$4)
+
+1 error]
+	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:211)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:142)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:300)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:190)
+	at akka.stream.impl.fusing.MapAsync$$anon$30.onPush(Ops.scala:1289)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:541)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:423)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:624)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:501)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:599)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:768)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:783)
+	at akka.actor.Actor.aroundReceive(Actor.scala:534)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:532)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:690)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:573)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:543)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:269)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:230)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:242)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for play.modules.reactivemongo.ReactiveMongoApi was bound.
+  while locating play.modules.reactivemongo.ReactiveMongoApi
+    for the 2nd parameter of controllers.HomeController.<init>(HomeController.scala:18)
+  while locating controllers.HomeController
+    for the 3rd parameter of router.Routes.<init>(Routes.scala:29)
+  at play.api.inject.RoutesProvider$.bindingsFromConfiguration(BuiltinModule.scala:137):
+Binding(class router.Routes to self) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.inject.guice.GuiceableModuleConversions$$anon$4)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:543)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:159)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:106)
+	at com.google.inject.Guice.createInjector(Guice.java:87)
+	at com.google.inject.Guice.createInjector(Guice.java:78)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:200)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:155)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anon$1.$anonfun$reload$3(DevServerStart.scala:190)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:22)
+	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:182)
+	... 24 common frames omitted
+2021-03-05 16:05:09,889 [ERROR] from play.api.http.DefaultHttpErrorHandler in play-dev-mode-akka.actor.default-dispatcher-9 - 
+
+! @7j1lheodc - Internal server error, for (GET) [/create] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for play.modules.reactivemongo.ReactiveMongoApi was bound.
+  while locating play.modules.reactivemongo.ReactiveMongoApi
+    for the 2nd parameter of controllers.HomeController.<init>(HomeController.scala:18)
+  while locating controllers.HomeController
+    for the 3rd parameter of router.Routes.<init>(Routes.scala:29)
+  at play.api.inject.RoutesProvider$.bindingsFromConfiguration(BuiltinModule.scala:137):
+Binding(class router.Routes to self) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.inject.guice.GuiceableModuleConversions$$anon$4)
+
+1 error]
+	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:211)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:142)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:300)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:190)
+	at akka.stream.impl.fusing.MapAsync$$anon$30.onPush(Ops.scala:1289)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:541)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:423)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:624)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:501)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:599)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:768)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:783)
+	at akka.actor.Actor.aroundReceive(Actor.scala:534)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:532)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:690)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:573)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:543)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:269)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:230)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:242)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for play.modules.reactivemongo.ReactiveMongoApi was bound.
+  while locating play.modules.reactivemongo.ReactiveMongoApi
+    for the 2nd parameter of controllers.HomeController.<init>(HomeController.scala:18)
+  while locating controllers.HomeController
+    for the 3rd parameter of router.Routes.<init>(Routes.scala:29)
+  at play.api.inject.RoutesProvider$.bindingsFromConfiguration(BuiltinModule.scala:137):
+Binding(class router.Routes to self) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.inject.guice.GuiceableModuleConversions$$anon$4)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:543)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:159)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:106)
+	at com.google.inject.Guice.createInjector(Guice.java:87)
+	at com.google.inject.Guice.createInjector(Guice.java:78)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:200)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:155)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anon$1.$anonfun$reload$3(DevServerStart.scala:190)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:22)
+	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:182)
+	... 24 common frames omitted
+2021-03-05 16:05:31,754 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-30 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2021-03-05 11:10:19,910 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-5 - Application started (Dev) (no global state)
+2021-03-05 16:05:31,757 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-30 - Application started (Dev) (no global state)

@@ -3,14 +3,16 @@ package controllers
 import akka.stream.scaladsl.Sink.collection
 import controllers.Helpers
 import controllers.Helpers._
+import models._
 
 import javax.inject._
 import play.api.mvc._
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
-import play.api.libs.json._
-import reactivemongo.api.{Cursor, ReadPreference}
+import reactivemongo.api.{Cursor, MongoConnectionOptions, ReadPreference}
 import reactivemongo.play.json.collection.Helpers.idWrites
 import reactivemongo.play.json.collection.JSONCollection
+import play.api.libs.json._
+import reactivemongo.play.json._
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -20,18 +22,21 @@ class HomeController @Inject() (cc: ControllerComponents, val reactiveMongoApi: 
 
   implicit def ec: ExecutionContext = cc.executionContext
 
-  def collection: Future[JSONCollection] =
-    database.map(_.collection[JSONCollection]("names"))
-
+  def userCollection: Future[JSONCollection] =
+    database.map(_.collection[JSONCollection]("users"))
 
   def create = Action.async {
-    println("attempting to create name")
-    val json = Json.obj("name" -> "pnus")
-
-    this.collection.flatMap(_.insert.one(json)).map(lastError =>
-        Ok("Mongo LastError: %s".format(lastError))
+    val user = User(22, "Simon", "Forster", List(Feed("Some page", "https://www.google.com")))
+    userCollection.flatMap(_.insert.one(user)).map(_ =>
+      Ok
     )
   }
+
+
+
+  def update = ???
+
+  def delete = ???
 
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
@@ -40,4 +45,5 @@ class HomeController @Inject() (cc: ControllerComponents, val reactiveMongoApi: 
   def test = Action {
     Ok(views.html.index("aaaa"))
   }
+
 }
